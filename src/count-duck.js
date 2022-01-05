@@ -4,10 +4,10 @@ const fs = require("fs");
 async function main() {
   // Uncomment to download.
   // const ducks = await getDuckList();
-  // fs.writeFileSync("./ducklist.json", JSON.stringify(ducks));
+  // fs.writeFileSync("./data/ducklist.json", JSON.stringify(ducks));
 
   // Read already downloaded data
-  const ducks = JSON.parse(fs.readFileSync("./ducklist.json"));
+  const ducks = JSON.parse(fs.readFileSync("./data/ducklist.json"));
   const traitFrequencies = listTraits(ducks);
   const score = computeDuckScore(ducks, traitFrequencies);
   makeDuckScoreCSV(ducks, score);
@@ -116,7 +116,7 @@ function makeDuckScoreCSV(ducks, duckScore) {
       duck.tokenId +
       "\n";
   }
-  fs.writeFileSync("./duck-score.csv", csv);
+  fs.writeFileSync("./data/duck-score.csv", csv);
 }
 
 main()
